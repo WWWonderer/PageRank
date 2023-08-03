@@ -101,7 +101,7 @@ def apply_text_tank(file_name, title="a document"):
     print()
     print("Reading \"%s\" ..." % title)
     file_path = os.path.join(os.path.dirname(__file__), file_name)
-    document = open(file_path).read()
+    document = open(file_path, encoding='utf-8').read()
     document = __ascii_only(document)
     
     print("Applying TextRank to \"%s\" ..." % title)
@@ -115,6 +115,8 @@ def apply_text_tank(file_name, title="a document"):
     print()
 
 def main():
+    nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
     apply_text_tank("Cinderalla.txt", "Cinderalla")
     apply_text_tank("Beauty_and_the_Beast.txt", "Beauty and the Beast")
     apply_text_tank("Rapunzel.txt", "Rapunzel")
